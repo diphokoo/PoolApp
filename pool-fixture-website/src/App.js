@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import MatchResultPage from './pages/MatchResultPage';
+import LeaderboardPage from './pages/LeaderboardPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="bg-gray-100 min-h-screen">
+        <nav className="bg-blue-600 p-4 text-white">
+          <ul className="flex space-x-4">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/match-result">Record Match Result</Link></li>
+            <li><Link to="/leaderboard">Leaderboard</Link></li>
+          </ul>
+        </nav>
+        <div className="p-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/match-result" element={<MatchResultPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
