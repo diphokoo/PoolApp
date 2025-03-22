@@ -1,7 +1,7 @@
 // src/pages/LeaderboardPage.js
 import React, { useEffect, useState } from 'react';
 import { db } from '../js/firebase';
-import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs, where } from 'firebase/firestore';
 
 function LeaderboardPage() {
   const [players, setPlayers] = useState([]);
