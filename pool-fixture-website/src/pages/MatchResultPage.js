@@ -68,7 +68,7 @@ function MatchResultPage() {
         player1: player1.trim(),
         player2: player2.trim(),
         winner: winner.trim(),
-        date: new Date().toISOString().split('T')[0],
+        date: new Date().toLocaleDateString('en-GB'),
         timestamp: new Date(),
       });
       
