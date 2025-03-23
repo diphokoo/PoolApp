@@ -16,7 +16,7 @@ function HomePage() {
         const matchesQuery = query(
           collection(db, 'fixtures'),
           orderBy('timestamp', 'desc'),
-          limit(5)
+          limit(3)
         );
         const matchesSnapshot = await getDocs(matchesQuery);
         const matchesData = matchesSnapshot.docs
@@ -30,7 +30,7 @@ function HomePage() {
         const fixturesQuery = query(
           collection(db, 'fixtures'),
           orderBy('created_at', 'desc'),
-          limit(5)
+          limit(3)
         );
         const fixturesSnapshot = await getDocs(fixturesQuery);
         const fixturesData = fixturesSnapshot.docs
