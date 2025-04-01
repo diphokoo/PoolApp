@@ -10,6 +10,7 @@ function CreateFixturesPage() {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [newPlayer, setNewPlayer] = useState('');
   const itemsPerPage = 5;
 
   useEffect(() => {
@@ -108,6 +109,27 @@ function CreateFixturesPage() {
             }`}
           >
             Generate Monthly Fixtures
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <input
+            type="text"
+            value={newPlayer}
+            onChange={(e) => setNewPlayer(e.target.value)}
+            placeholder="Enter new player name"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <button
+            onClick={() => {
+              if (newPlayer.trim()) {
+                setPlayers([...players, newPlayer.trim()]);
+                setNewPlayer('');
+              }
+            }}
+            className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Add Player
           </button>
         </div>
 
