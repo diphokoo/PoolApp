@@ -29,6 +29,7 @@ function LeaderboardPage() {
                 matches: 0,
                 wins: 0,
                 losses: 0,
+                points: 0,
                 winRate: 0
               };
             }
@@ -40,9 +41,11 @@ function LeaderboardPage() {
           
           if (match.winner === match.player1) {
             playerStats[match.player1].wins++;
+            playerStats[match.player1].points += 3;
             playerStats[match.player2].losses++;
           } else {
             playerStats[match.player2].wins++;
+            playerStats[match.player2].points += 3;
             playerStats[match.player1].losses++;
           }
         });
@@ -70,7 +73,7 @@ function LeaderboardPage() {
   const sortLeaderboard = (data) => {
     switch (sortBy) {
       case 'wins':
-        data.sort((a, b) => b.wins - a.wins || b.winRate - a.winRate);
+        data.sort((a, b) => b.points - a.points || b.wins - a.wins || b.winRate - a.winRate);
         break;
       case 'winRate':
         data.sort((a, b) => b.winRate - a.winRate || b.wins - a.wins);
@@ -164,6 +167,9 @@ function LeaderboardPage() {
                 Losses
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Points
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Win Rate
               </th>
             </tr>
@@ -194,6 +200,9 @@ function LeaderboardPage() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-medium">
                   {player.losses}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 font-medium">
+                  {player.points}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {player.winRate}%
